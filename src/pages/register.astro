@@ -25,7 +25,7 @@ const { data, error } = await supabase
         { ciudad: String }
     ])
   .select()
-const { data: insertData, error: insertError } = await supabase
+const { data: insertData, error: insertError, } = await supabase
   .from('user')
   .insert([
     { nombre: String, email: String, password: String, fecNacimiento: new Date(), direccion: String, ciudad: String }
@@ -52,11 +52,18 @@ const { data: insertData, error: insertError } = await supabase
                 <input type="text" name="ciudad" id="ciudad" required>
                 <label for="direccion">Dirección (hogar)</label>
                 <input type="text" name="direccion" id="direccion" required>
-                <button type="submit">Registrar</button>
+                <button type="submit" id="button">Registrar</button>
             </form>
             
         
         </main>
+
+        <!-- <script>
+          function registroClick(){
+            console.log('boton pulsado');
+          }
+          document.getElementById('button').addEventListener('click', registroClick);
+        </script> -->
 
     </Layout> 
 
