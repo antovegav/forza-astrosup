@@ -1,0 +1,21 @@
+---
+import {supabase} from '../lib/supabase';
+
+let { data: Productos, error } = await supabase
+    .from('Productos')
+    .select('nombre, precio, descripcion, stock')
+
+---
+
+
+    <a href={'/'} class="rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col">
+                {Productos.map((producto) => (
+                    <div class="p-4 flex-grow">
+                    <header class="my-2 text-4xl font-bold tracking-tight text-white">{producto.nombre}</header>
+                    <p class="mb-4 font-light text-gray-400">{producto.descripcion}</p>
+                    <h2 class="my-2 text-2xl font-bold tracking-tight text-white">${producto.precio}</h2>
+                    <span class={'text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${success ? "bg-green-200 text-green-900" : "bg-red-200 text-red-90"}'}>Stock: {producto.stock}</span>
+                    <p class="my-5"></p>
+                    </div>
+                ))}
+    </a>
