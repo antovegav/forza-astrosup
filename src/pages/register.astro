@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { supabase } from '../lib/supabase';
 import { map } from 'nanostores';
 import type { APIRoute } from "astro";
-// import { APIRoute } from 'astro';
 
 
 
@@ -25,12 +24,8 @@ const { data, error } = await supabase
         { ciudad: String }
     ])
   .select()
-const { data: insertData, error: insertError, } = await supabase
-  .from('user')
-  .insert([
-    { nombre: String, email: String, password: String, fecNacimiento: new Date(), direccion: String, ciudad: String }
-  ])
-  .select();
+
+          
 
 
 

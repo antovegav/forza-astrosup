@@ -32,6 +32,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     //     return new Response(insertError.message, { status: 500 });
     // }
 
-    return redirect("/signin");
+    return redirect("/login.astro");
 };
 

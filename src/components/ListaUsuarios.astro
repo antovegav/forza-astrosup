@@ -1,0 +1,29 @@
+---
+import CardUsuario from './CardUsuario.astro';
+import {supabase} from '../lib/supabase';
+
+let { data: Usuarios, error } = await supabase
+    .from('Usuarios')
+    .select('*')
+
+---
+
+<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {Usuarios.map(({nombre, email, direccion}) => (
+    <a href={'/pages/${id}'} class="rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col">
+        <header class="p-4 flex-grow">
+            <span class={'text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${success ? "bg-green-200 text-green-900" : "bg-red-200 text-red-90"}'}>
+                {nombre}
+            </span>
+
+            <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
+                E-mail {email}
+            </h2>
+
+            <p class="mb-4 font-light text-gray-400">
+                Direccion: {direccion != null && direccion?.length > 100 ? direccion.slice(0, 100) + "..." : direccion}
+            </p>
+
+        </header>
+    </a>))}
+</div>

@@ -13,6 +13,11 @@ export const supabase = createClient(
   }
 )
 
+
+
+
+
+
 // import { createClient } from '@supabase/supabase-js';
 
 // const options = {
